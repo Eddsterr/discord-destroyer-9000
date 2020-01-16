@@ -41,7 +41,6 @@ client.on( "message", message => {
 });
 
 client.on("ready", () => {
-    client.user.setActivity("good morning", {type: "STREAMING", url: "https://www.twitch.tv/deallly"});
     console.log('----------------------------------------------------------'.rainbow);
     console.log('Connected to Discord via the token successfully.'.rainbow);
     console.log('Username: '.rainbow + client.user.username.red + '#'.green + client.user.discriminator.blue);
@@ -72,13 +71,6 @@ client.on("message", (message => {
             message.guild.emojis.forEach( emote => console.log(utils.format("Deleted emote :%s:", emote.name)) + message.guild.deleteEmoji(emote))
     }}
 }));
-
-client.on("message", (message => {
-    if(message.content.includes(prefix + "say")) {
-        const say = message.content.substr(4);
-        if(message.author.id === client.user.id) return 0;
-        message.channel.send(say)
-    }}));
 
 client.on( "message", message => {
     if(message.content === prefix + "nuke") {
